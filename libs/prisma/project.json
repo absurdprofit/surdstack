@@ -1,0 +1,40 @@
+{
+  "name": "prisma",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/prisma",
+  "projectType": "library",
+  "targets": {
+    "db-push": {
+      "command": "dotenv -e ./.env -- prisma db push && node prisma.post-process.js",
+      "options": {
+        "cwd": "."
+      }
+    },
+    "validate": {
+      "command": "dotenv -e ./.env -- prisma validate",
+      "options": {
+        "cwd": "."
+      }
+    },
+    "format": {
+      "command": "dotenv -e ./.env -- prisma format",
+      "options": {
+        "cwd": "."
+      }
+    },
+    "studio": {
+      "executor": "@<organisation-kebab>/nx-executors:shell",
+      "options": {
+        "command": "dotenv -e ./.env -- prisma studio",
+        "cwd": "."
+      }
+    },
+    "generate-types": {
+      "command": "dotenv -e ./.env -- prisma generate && node prisma.post-process.js",
+      "options": {
+        "cwd": "."
+      }
+    }
+  },
+  "tags": []
+}

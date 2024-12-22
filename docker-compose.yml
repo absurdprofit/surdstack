@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+  db:
+    image: mongo:latest
+    restart: always
+    container_name: db
+    environment:
+      MONGO_INITDB_DATABASE: db
+    ports:
+      - '27017:27017'
+    networks:
+      - mongo-net
+    command: mongod --replSet rs0 --bind_ip localhost,db
+
+  mongoClient:
+    image: mongo:latest
+    container_name: mongoClient
+    networks:
+      - mongo-net
+    links:
+      - db
+    volumes:
+      - ./mongo-scripts:/mongo-scripts
+    command:
+      - /mongo-scripts/initialise.sh
+    depends_on:
+      - db
+
+networks:
+  mongo-net:
+    driver: bridge

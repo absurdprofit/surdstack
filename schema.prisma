@@ -1,0 +1,188 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["deno"]
+  output = "./libs/prisma/.generated"
+}
+
+model User {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  email String
+  name String
+  displayName String
+  credentials WebAuthnCredential[]
+  privileges String[] // `${permission.resource}:${permission.action}` - privileges that are allowed to be exercised
+  organisationId String @db.ObjectId
+  organisation Organisation @relation(fields: [organisationId], references: [id])
+  createdAt DateTime @default(now())
+  @@unique([email, organisationId])
+}
+
+enum CredentialType {
+  WebAuthn
+  Client
+  Token
+}
+
+model WebAuthnCredential {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @db.ObjectId
+  authenticatorCredentialId String?
+  challenge String?
+  challengeHash String?
+  challengeExpires DateTime?
+  publicKey String?
+  prevCounter Int @default(0)
+  verified Boolean @default(false)
+  trusted Boolean @default(false)
+  tokenCredential TokenCredential?
+  deviceName String
+  lastUsed DateTime
+  lastUsedUserAgent String
+  lastUsedIP String
+  type CredentialType @default(WebAuthn)
+  @@unique([id, type])
+}
+
+model ClientCredential {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  client Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  clientId String @db.ObjectId @unique
+  clientSecret String
+  trusted Boolean @default(false)
+  tokenCredential TokenCredential?
+  createdAt DateTime @default(now())
+  expires DateTime
+  lastUsed DateTime
+  lastUsedIP String
+  type CredentialType @default(Client)
+  @@unique([id, type])
+}
+
+model TokenCredential {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  sourceId String @db.ObjectId
+  sourceType CredentialType
+  webAuthnCredential WebAuthnCredential? @relation(fields: [sourceId, sourceType], references: [id, type], onDelete: Cascade)
+  clientCredential ClientCredential? @relation(fields: [sourceId, sourceType], references: [id, type], onDelete: Cascade)
+  publicKey String
+  createdAt DateTime @default(now())
+  type CredentialType @default(Token)
+  @@unique([sourceId, sourceType])
+}
+
+model Permission {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  resource String
+  action String
+  @@unique([resource, action])
+  description String @default("")
+}
+
+model Client {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  description String @default("")
+  credential ClientCredential?
+  privileges String[] // `${permission.resource}:${permission.action}` - privileges that are allowed to be exercised
+  organisationId String @db.ObjectId
+  organisation Organisation @relation(fields: [organisationId], references: [id])
+  createdAt DateTime @default(now())
+  @@unique([name, organisationId])
+}
+
+enum LogLevel {
+  Debug
+  Info
+  Warn
+  Error
+}
+
+type HttpRequest {
+  traceId String
+  method String
+  statusCode Int
+  url String
+  ip String
+  userAgent String
+  timestamp DateTime
+  responseTimeMs Int
+}
+
+model Log {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  level LogLevel
+  error Json?
+  request HttpRequest?
+  tags String[] @default([])
+  message String?
+  payload Json?
+  createdAt DateTime @default(now())
+}
+
+enum QueueOrder {
+  Random
+  Sequential
+}
+
+model Service {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  sector String 
+  description String
+  tickets Ticket[]
+  queueStore QueueStore?
+  queueSettings QueueSettings? 
+  organisationId String @db.ObjectId
+  organisation Organisation @relation(fields: [organisationId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+enum TicketStatus {
+  Future
+  Current
+  Past
+  Missed
+}
+
+model Ticket {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  serviceId String @db.ObjectId
+  service Service @relation(fields: [serviceId], references: [id])
+  queueStoreId String @db.ObjectId
+  queueStore QueueStore @relation(fields: [queueStoreId], references: [id])
+  createdAt DateTime @default(now())
+  assignedAt DateTime
+  status TicketStatus
+  number Int
+}
+
+model QueueStore {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  serviceId String @db.ObjectId @unique
+  service Service @relation(fields: [serviceId], references: [id])
+  tickets Ticket[]
+}
+
+model QueueSettings {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  numberLimit Int
+  order QueueOrder
+  missedForgiveness Boolean
+  autoStart Boolean
+  serviceId String @db.ObjectId @unique
+  service Service @relation(fields: [serviceId], references: [id])
+}
+
+model Organisation {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String @unique
+  users User[]
+  clients Client[]
+  services Service[]
+}

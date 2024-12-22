@@ -1,0 +1,18 @@
+{
+  "cSpell.words": [
+    "datasources",
+    "Hono"
+  ],
+  "deno.enablePaths": ["api"],
+  "deno.unstable": true,
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "js/ts.implicitProjectConfig.experimentalDecorators": false,
+  "eslint.validate": [
+    "json"
+  ],
+  "typescript.preferences.quoteStyle": "single",
+  "prettier.singleQuote": true,
+  "javascript.preferences.quoteStyle": "single",
+  "eslint.format.enable": true,
+  "deno.enable": true
+}

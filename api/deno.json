@@ -1,0 +1,33 @@
+{
+  "name": "@<organisation-kebab>/api",
+  "version": "1.0.0",
+  "exports": "./src/app.ts",
+  "compilerOptions": {
+    "strict": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": [
+      "deno.window",
+      "esnext",
+      "dom",
+      "dom.iterable"
+    ]
+  },
+  "imports": {
+    "fido2-lib": "npm:fido2-lib@3.5.3",
+    "node": "npm:@types/node@18.16.16",
+    "@<organisation-kebab>/schema": "../libs/models/src/index.ts",
+    "@<organisation-kebab>/prisma/": "../libs/prisma/",
+    "@<organisation-kebab>/email": "../libs/ui/react/email/build/index.ts",
+    "@api/": "./src/",
+    "zod": "https://deno.land/x/zod@v3.23.8/mod.ts",
+    "@hono/hono": "jsr:@hono/hono",
+    "djwt": "https://deno.land/x/djwt@v2.9.1/mod.ts",
+    "base64url": "https://deno.land/std@0.204.0/encoding/base64url.ts",
+    "reflect-metadata": "https://deno.land/x/reflect_metadata@v0.1.12/mod.ts",
+    "ts-pattern": "npm:ts-pattern@5.5.0",
+    "ua-parser": "npm:ua-parser-js@2.0.0-rc.1",
+    "react": "npm:react@18.3.1",
+    "react-dom": "npm:react-dom@18.3.1"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "nx-executors",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/nx-executors/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/tools/nx-executors",
+        "main": "tools/nx-executors/src/index.ts",
+        "tsConfig": "tools/nx-executors/tsconfig.lib.json",
+        "assets": [
+          "tools/nx-executors/*.md",
+          {
+            "input": "./tools/nx-executors/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/nx-executors/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/nx-executors",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./tools/nx-executors",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}

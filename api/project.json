@@ -1,0 +1,44 @@
+{
+  "name": "api",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "src",
+  "targets": {
+    "dev": {
+      "executor": "@<organisation-kebab>/nx-executors:shell",
+      "options": {
+        "command": "deno serve --allow-env --allow-read --allow-net --allow-sys --allow-ffi --env --watch-hmr --inspect --no-clear-screen src/app.ts",
+        "cwd": "api"
+      }
+    },
+    "serve": {
+      "executor": "@<organisation-kebab>/nx-executors:shell",
+      "options": {
+        "command": "deno serve --allow-env --allow-read --allow-net --allow-sys --allow-ffi --env --parallel src/app.ts",
+        "cwd": "api"
+      }
+    },
+    "check": {
+      "executor": "@<organisation-kebab>/nx-executors:shell",
+      "options": {
+        "command": "deno check src/app.ts",
+        "cwd": "api"
+      }
+    },
+    "lint": {
+      "executor": "@<organisation-kebab>/nx-executors:shell",
+      "options": {
+        "command": "deno lint src",
+        "cwd": "api"
+      }
+    },
+    "test": {
+      "executor": "@<organisation-kebab>/nx-executors:shell",
+      "options": {
+        "command": "deno test",
+        "cwd": "api"
+      }
+    }
+  },
+  "tags": []
+}

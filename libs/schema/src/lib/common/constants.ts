@@ -1,0 +1,1 @@
+export const DB_ID_LENGTH = 24; // mongodb hex string length (12 bytes)
