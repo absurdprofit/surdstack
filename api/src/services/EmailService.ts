@@ -2,7 +2,7 @@ import type { JSX } from 'react';
 import { renderToString } from 'react-dom/server';
 import { EMAIL_FROM, RESEND_API_URL } from '@api/common/constants.ts';
 import { RequestMethod, Headers, ContentTypes } from '@api/common/enums.ts';
-import { Inject } from '@api/internals/index.ts';
+import { Inject } from '@resourceful-hono/core';
 import { EnvironmentService } from '@api/services/EnvironmentService.ts';
 
 type EmailBody = string | JSX.Element;

@@ -1,5 +1,5 @@
 import { verifyAssertionRequest } from '@<organisation-kebab>/schema';
-import { FromBody, FromQuery, Inject, Result } from '@api/internals/index.ts';
+import { FromBody, FromQuery, Inject, Result } from '@resourceful-hono/core';
 import * as base64url from 'base64url';
 import { z } from 'zod';
 import { BadRequestError, DependencyFailedError, ForbiddenError, InternalServerError, NotFoundError, UnauthorizedError } from '@api/common/errors.ts';

@@ -1,5 +1,5 @@
 import { createUserRequest } from '@<organisation-kebab>/schema';
-import { Result, FromBody, FromRoute, Protected } from '@api/internals/index.ts';
+import { Result, FromBody, FromRoute, Protected } from '@resourceful-hono/core';
 import { BadRequestError, ConflictError, NotFoundError } from '@api/common/errors.ts';
 import BaseResource from '../BaseResource.ts';
 import type { Prisma } from '@<organisation-kebab>/prisma/index.ts';

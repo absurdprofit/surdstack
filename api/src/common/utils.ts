@@ -2,7 +2,7 @@ import * as base64url from 'base64url';
 import type { HttpRequestLog } from '@api/common/types.ts';
 import { CryptoHashingAlgorithm, Headers } from '@api/common/enums.ts';
 import { EnvironmentService } from '@api/services/EnvironmentService.ts';
-import { AppServer } from '@api/internals/index.ts';
+import { AppServer } from '@resourceful-hono/core';
 
 export const textEncoder = new TextEncoder();
 export async function hash(message: string) {

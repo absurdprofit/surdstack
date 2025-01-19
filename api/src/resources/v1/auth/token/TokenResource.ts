@@ -1,5 +1,5 @@
 import { createAccessTokenRequest, type createAccessTokenResponse } from '@<organisation-kebab>/schema';
-import { FromBody, Result } from '@api/internals/index.ts';
+import { FromBody, Result } from '@resourceful-hono/core';
 import { NotImplementedError } from '@api/common/errors.ts';
 import { type RefreshTokenPayload } from '@api/common/types.ts';
 import { HttpStatusCodes, Permissions } from '@api/common/enums.ts';

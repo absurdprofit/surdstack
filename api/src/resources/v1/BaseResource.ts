@@ -1,4 +1,4 @@
-import { Route, Resource, Inject } from '@api/internals/index.ts';
+import { Route, Resource, Inject } from '@resourceful-hono/core';
 import { PrismaService } from '@api/services/PrismaService.ts';
 
 @Route('/api/v1/')

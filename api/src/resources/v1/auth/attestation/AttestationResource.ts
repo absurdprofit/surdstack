@@ -1,4 +1,4 @@
-import { Result, FromBody, FromQuery, Inject } from '@api/internals/index.ts';
+import { Result, FromBody, FromQuery, Inject } from '@resourceful-hono/core';
 import {
   DependencyFailedError,
   InternalServerError,

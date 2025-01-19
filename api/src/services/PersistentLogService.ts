@@ -2,7 +2,7 @@ import { LogLevel } from '@api/common/enums.ts';
 import type { LogData } from '@api/common/types.ts';
 import type { Prisma } from '@<organisation-kebab>/prisma/index.ts';
 import { SerialisableError } from '@api/common/errors.ts';
-import { Inject } from '@api/internals/index.ts';
+import { Inject } from '@resourceful-hono/core';
 import { LogService } from '@api/services/LogService.ts';
 import { PrismaService } from '@api/services/PrismaService.ts';
 

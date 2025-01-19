@@ -4,7 +4,7 @@ import { hash } from '@api/common/utils.ts';
 import { UnauthorizedError, InternalServerError } from '@api/common/errors.ts';
 import type { AccessTokenHeader, AuthnTokenHeader, RefreshTokenHeader, TokenPayload } from '@api/common/types.ts';
 import { isTokenHeader, isTokenPayload, tokenHasScopeClaim } from '@api/common/types.ts';
-import { Inject } from '@api/internals/index.ts';
+import { Inject } from '@resourceful-hono/core';
 import { CredentialTypes, CryptoHashingAlgorithm, CryptoKeyAlgorithm, CryptoKeyFormat, CryptoKeyNamedCurve, CryptoKeyUsage, JwtAlgorithm, JwtType } from '@api/common/enums.ts';
 import { DEFAULT_TOKEN_NAME, JWT_TTL, RELYING_PARTY_ID } from '@api/common/constants.ts';
 import { PrismaService } from '@api/services/PrismaService.ts';

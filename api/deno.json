@@ -14,9 +14,10 @@
     ]
   },
   "imports": {
+    "@resourceful-hono/core": "jsr:@resourceful-hono/core@1.0.0-beta.sha-562ebf8",
     "fido2-lib": "npm:fido2-lib@3.5.3",
     "node": "npm:@types/node@18.16.16",
-    "@<organisation-kebab>/schema": "../libs/models/src/index.ts",
+    "@<organisation-kebab>/schema": "../libs/schema/src/index.ts",
     "@<organisation-kebab>/prisma/": "../libs/prisma/",
     "@<organisation-kebab>/email": "../libs/ui/react/email/build/index.ts",
     "@api/": "./src/",
