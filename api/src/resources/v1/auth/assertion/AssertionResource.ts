@@ -1,6 +1,6 @@
 import { verifyAssertionRequest } from '@<organisation-kebab>/schema';
 import { FromBody, FromQuery, Inject, Result } from '@resourceful-hono/core';
-import * as base64url from 'base64url';
+import * as base64url from '@std/encoding/base64url';
 import { z } from 'zod';
 import { BadRequestError, DependencyFailedError, ForbiddenError, InternalServerError, NotFoundError, UnauthorizedError } from '@api/common/errors.ts';
 import type { ExpectedAssertionResult } from 'fido2-lib';

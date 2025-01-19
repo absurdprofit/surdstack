@@ -9,7 +9,6 @@ import { dbId } from '@api/common/schemas.ts';
 import { Protected } from '@api/common/decorators.ts';
 
 export default class UserResource extends BaseResource {
-  @Protected([Permissions.UserRead, Permissions.UserWrite, Permissions.UserAdmin])
   public async GET(@FromRoute('id', dbId) id: string) {
     const user = await this.prisma.user.findUnique({ where: { id } });
     if (user) {

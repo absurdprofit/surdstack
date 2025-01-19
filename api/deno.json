@@ -14,20 +14,20 @@
     ]
   },
   "imports": {
-    "@resourceful-hono/core": "jsr:@resourceful-hono/core@1.0.0-beta.sha-562ebf8",
+    "@resourceful-hono/core": "jsr:@resourceful-hono/core@1.0.0-beta.sha-f523590",
     "fido2-lib": "npm:fido2-lib@3.5.3",
     "node": "npm:@types/node@18.16.16",
     "@<organisation-kebab>/schema": "../libs/schema/src/index.ts",
     "@<organisation-kebab>/prisma/": "../libs/prisma/",
     "@<organisation-kebab>/email": "../libs/ui/react/email/build/index.ts",
     "@api/": "./src/",
-    "zod": "https://deno.land/x/zod@v3.23.8/mod.ts",
+    "zod": "npm:zod@3.24.1",
     "@hono/hono": "jsr:@hono/hono",
-    "djwt": "https://deno.land/x/djwt@v2.9.1/mod.ts",
-    "base64url": "https://deno.land/std@0.204.0/encoding/base64url.ts",
+    "@wok/djwt": "jsr:@wok/djwt@3.0.2",
+    "@std/encoding": "jsr:@std/encoding@1.0.6",
     "reflect-metadata": "https://deno.land/x/reflect_metadata@v0.1.12/mod.ts",
     "ts-pattern": "npm:ts-pattern@5.5.0",
-    "ua-parser": "npm:ua-parser-js@2.0.0-rc.1",
+    "ua-parser-js": "npm:ua-parser-js@2.0.0-rc.1",
     "react": "npm:react@18.3.1",
     "react-dom": "npm:react-dom@18.3.1"
   }

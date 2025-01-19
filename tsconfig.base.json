@@ -4,7 +4,7 @@
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
@@ -18,8 +18,10 @@
     "paths": {
       "@<organisation-kebab>/email": ["libs/ui/react/email/src/index.ts"],
       "@<organisation-kebab>/nx-executors": ["tools/nx-executors/src/index.ts"],
-      "@<organisation-kebab>/prisma": ["libs/prisma/src/index.ts"],
-      "@<organisation-kebab>/schema": ["libs/models/src/index.ts"]
+      "@<organisation-kebab>/prisma/*": ["libs/prisma/*"],
+      "@<organisation-kebab>/schema": ["libs/schema/src/index.ts"],
+      "@<organisation-kebab>/api/*": ["api/src/*"],
+      "@api/*": ["api/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

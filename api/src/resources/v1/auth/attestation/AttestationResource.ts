@@ -7,7 +7,7 @@ import {
 } from '@api/common/errors.ts';
 import type { ExpectedAttestationResult } from 'fido2-lib';
 import { verifyAttestationRequest } from '@<organisation-kebab>/schema';
-import * as base64url from 'base64url';
+import * as base64url from '@std/encoding/base64url';
 import { z } from 'zod';
 import { Headers, HttpStatusCodes } from '@api/common/enums.ts';
 import { hash } from '@api/common/utils.ts';

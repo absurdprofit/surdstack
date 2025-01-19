@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import { StrictMode, Suspense } from 'react';
 import * as ReactDOM from 'react-dom/client';
 
 import App from './app/App';
@@ -8,6 +8,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <StrictMode>
-    <App />
+    <Suspense fallback={<div>Obviously a fallback</div>}>
+      <App />
+    </Suspense>
   </StrictMode>
 );

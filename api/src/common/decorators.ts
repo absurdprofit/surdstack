@@ -3,6 +3,7 @@ import { ForbiddenError, UnauthorizedError } from '@api/common/errors.ts';
 import { hasRequiredScope } from '@api/common/utils.ts';
 import { OAuthService } from '@api/services/OAuthService.ts';
 import { tokenHasScopeClaim } from '@api/common/types.ts';
+import { Permissions } from '@api/common/enums.ts';
 
 export function Protected(requiredScope: Permissions[]) {
   function ProtectedFactory<T extends IResource[RequestMethod]>(_target: IResource, _propertyKey: string, descriptor: TypedPropertyDescriptor<T>) {

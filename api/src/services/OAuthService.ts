@@ -1,5 +1,5 @@
-import * as base64url from 'base64url';
-import * as jwt from 'djwt';
+import * as base64url from '@std/encoding/base64url';
+import * as jwt from '@wok/djwt';
 import { hash } from '@api/common/utils.ts';
 import { UnauthorizedError, InternalServerError } from '@api/common/errors.ts';
 import type { AccessTokenHeader, AuthnTokenHeader, RefreshTokenHeader, TokenPayload } from '@api/common/types.ts';

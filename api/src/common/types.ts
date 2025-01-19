@@ -1,5 +1,5 @@
 import type { Prisma } from '@<organisation-kebab>/prisma/index.ts';
-import * as jwt from 'djwt';
+import * as jwt from '@wok/djwt';
 import { jwtHeader, jwtPayload } from '@api/common/schemas.ts';
 import { z } from 'zod';
 

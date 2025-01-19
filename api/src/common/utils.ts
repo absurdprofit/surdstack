@@ -1,4 +1,4 @@
-import * as base64url from 'base64url';
+import * as base64url from '@std/encoding/base64url';
 import type { HttpRequestLog } from '@api/common/types.ts';
 import { CryptoHashingAlgorithm, Headers, Permissions } from '@api/common/enums.ts';
 import { EnvironmentService } from '@api/services/EnvironmentService.ts';
