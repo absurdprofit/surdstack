@@ -1,11 +1,12 @@
 import { createUserRequest } from '@<organisation-kebab>/schema';
-import { Result, FromBody, FromRoute, Protected } from '@resourceful-hono/core';
+import { Result, FromBody, FromRoute } from '@resourceful-hono/core';
 import { BadRequestError, ConflictError, NotFoundError } from '@api/common/errors.ts';
 import BaseResource from '../BaseResource.ts';
 import type { Prisma } from '@<organisation-kebab>/prisma/index.ts';
 import { HttpStatusCodes, Permissions } from '@api/common/enums.ts';
 import { z } from 'zod';
 import { dbId } from '@api/common/schemas.ts';
+import { Protected } from '@api/common/decorators.ts';
 
 export default class UserResource extends BaseResource {
   @Protected([Permissions.UserRead, Permissions.UserWrite, Permissions.UserAdmin])

@@ -270,6 +270,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@hono/hono@*",
+      "jsr:@resourceful-hono/core@1.0.0-beta.sha-562ebf8",
       "npm:@types/node@18.16.16",
       "npm:fido2-lib@3.5.3",
       "npm:react-dom@18.3.1",

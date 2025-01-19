@@ -1,8 +1,8 @@
 import * as base64url from 'base64url';
 import type { HttpRequestLog } from '@api/common/types.ts';
-import { CryptoHashingAlgorithm, Headers } from '@api/common/enums.ts';
+import { CryptoHashingAlgorithm, Headers, Permissions } from '@api/common/enums.ts';
 import { EnvironmentService } from '@api/services/EnvironmentService.ts';
-import { AppServer } from '@resourceful-hono/core';
+import { Application } from '@resourceful-hono/core';
 
 export const textEncoder = new TextEncoder();
 export async function hash(message: string) {
@@ -38,5 +38,9 @@ export function createHttpRequestLog(req: Request, res: Response): HttpRequestLo
 }
 
 export const getEnv: EnvironmentService['get'] = (key) => {
-  return AppServer.instance.services.get(EnvironmentService).get(key);
+  return Application.instance.getService(EnvironmentService).get(key);
 };
+
+export function hasRequiredScope(requiredScope: Permissions[], scopeClaims: string[]) {
+  return requiredScope.some(scope => scopeClaims.includes(scope));
+}
