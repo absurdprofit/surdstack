@@ -7,19 +7,16 @@ import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 export default defineConfig({
   root: __dirname,
   cacheDir: '../node_modules/.vite/rpc-test',
-  server: {
-    port: 4200,
-    host: 'localhost',
-  },
-  preview: {
-    port: 4300,
-    host: 'localhost',
-  },
   plugins: [nxViteTsPaths(), nxCopyAssetsPlugin(['*.md']), react({ tsDecorators: true })],
   // Uncomment this if you are using workers.
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
   // },
+  server: {
+    proxy: {
+      '/api': 'http://localhost:8000/',
+    },
+  },
   esbuild: {
     supported: {
       'top-level-await': true,

@@ -67,7 +67,7 @@
   "dependencies": {
     "@prisma/client": "^5.17.0",
     "@react-email/components": "0.0.25",
-    "@resourceful-hono/core": "npm:@jsr/resourceful-hono__core@^1.0.0-beta.sha-f523590",
+    "@resourceful-hono/core": "npm:@jsr/resourceful-hono__core@^1.0.0-beta.sha-bc076de",
     "@std/encoding": "npm:@jsr/std__encoding@^1.0.6",
     "@wok/djwt": "npm:@jsr/wok__djwt@^3.0.2",
     "fido2-lib": "^3.5.3",
