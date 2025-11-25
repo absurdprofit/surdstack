@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "title": "Just Command Runner executor",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "One or more Just recipes to invoke. Maps directly to CLI positionals."
+    },
+    "args": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Positional arguments forwarded after the recipe name."
+    },
+    "set": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Equivalent of `--set KEY=VALUE` per entry. Does NOT override env."
+    },
+    "setOverride": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Equivalent of `--set-override KEY=VALUE`. Overrides variable + env."
+    },
+    "env": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Environment variables injected into process execution."
+    },
+    "justfile": {
+      "type": "string",
+      "description": "Path to a specific Justfile. Maps to `--justfile`."
+    },
+    "workingDirectory": {
+      "type": "string",
+      "description": "Directory passed to `--working-directory`. Defaults to projectRoot."
+    },
+    "noWorkingDirectory": {
+      "type": "boolean",
+      "description": "Maps to `--no-working-directory`.",
+      "default": false
+    },
+    "dotenvFilename": {
+      "type": "string",
+      "description": "Maps to `--dotenv-filename`. Overrides default .env file name."
+    },
+    "dotenvPath": {
+      "type": "string",
+      "description": "Maps to `--dotenv-path`. Directory containing dotenv files."
+    },
+    "dotenvOverride": {
+      "type": "boolean",
+      "description": "Maps to `--dotenv-override`. Dotenv values override environment.",
+      "default": false
+    },
+    "noDotenv": {
+      "type": "boolean",
+      "description": "Maps to `--no-dotenv` to disable dotenv loading.",
+      "default": false
+    },
+    "dryRun": {
+      "type": "boolean",
+      "description": "Maps to `--dry-run`. Print commands without executing.",
+      "default": false
+    },
+    "jobs": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Maps to `--jobs/-j <N>` to set parallel execution."
+    },
+    "choose": {
+      "type": "boolean",
+      "description": "Maps to `--choose`. Allows interactive recipe selection.",
+      "default": false
+    },
+    "check": {
+      "type": "boolean",
+      "description": "Maps to `--check`. Ensures referenced recipes exist.",
+      "default": false
+    },
+    "unsorted": {
+      "type": "boolean",
+      "description": "Maps to `--unsorted` listing behavior.",
+      "default": false
+    },
+    "summary": {
+      "type": "boolean",
+      "description": "Maps to `--summary` when listing tasks.",
+      "default": false
+    },
+    "quiet": {
+      "type": "boolean",
+      "description": "Maps to `--quiet`. Suppress output.",
+      "default": false
+    },
+    "verbose": {
+      "type": "boolean",
+      "description": "Maps to `--verbose` for expanded logs.",
+      "default": false
+    },
+    "color": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "always",
+        "never"
+      ],
+      "description": "Maps to `--color <when>`."
+    }
+  },
+  "required": [
+    "tasks"
+  ],
+  "additionalProperties": false
+}

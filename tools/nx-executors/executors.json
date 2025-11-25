@@ -4,6 +4,11 @@
       "implementation": "./src/shell/executor",
       "schema": "./src/shell/schema.json",
       "description": "shell executor"
+    },
+    "just": {
+      "implementation": "./src/just/executor",
+      "schema": "./src/just/schema.json",
+      "description": "Just Command Runner executor"
     }
   }
 }
